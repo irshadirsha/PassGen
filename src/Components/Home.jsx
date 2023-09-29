@@ -11,8 +11,8 @@ function Home() {
 
     const [complexity, setComplexity] = useState({
         uppercase: false,
-        lowercase: true,
-        numbers: true,
+        lowercase: false,
+        numbers: false,
         special: false,
       });
       const [password,setPassword]=useState('')
@@ -29,7 +29,7 @@ function Home() {
           ...prevComplexity,
           [option]: !prevComplexity[option],
         }));
-        setIsComplexitySelected(true);
+        // setIsComplexitySelected(true);
       };
 
     const generatePassword = () => {
@@ -49,10 +49,18 @@ function Home() {
 
        const handleGeneratePasswordClick = () => {
         console.log("called.............")
-        if (!isComplexitySelected) {
+        if (passwordLength <=5) {
+          toast.warning("minimum length of password is 6");
+          return;
+        }
+        if (!complexity.uppercase && !complexity.lowercase && !complexity.numbers && !complexity.special) {
           toast.warning("Please select at least one constraint");
           return;
         }
+        // if (!isComplexitySelected) {
+        //   toast.warning("Please select at least one constraint");
+        //   return;
+        // }
     const generatedPassword = generatePassword();
     console.log(generatedPassword);
     setPassword(generatedPassword)
@@ -167,7 +175,7 @@ return (
           Generate Password
         </button>
     
-        <div className='flex '>
+        <div className='flex  '>
              <button onClick={handlesave}
                className='btn generate'>save</button>
               {savepassword.length > 0 && (
