@@ -1,6 +1,7 @@
 
 import './App.css'
 import Home from './Components/Home'
+// import LineGraph from './Components/LineGraph'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     
       <div>
        <Home/>
+       {/* <LineGraph/> */}
       </div>
   )
 }

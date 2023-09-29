@@ -7,12 +7,12 @@ function Home() {
     const [passwordLength, setPasswordLength] = useState(16); 
     const [showmodal,setShowModal]=useState(false)
     const [passwordGenerated, setPasswordGenerated] = useState(false);
-    const [isComplexitySelected, setIsComplexitySelected] = useState(false);
+    const [isComplexitySelected, setIsComplexitySelected] = useState(true);
 
     const [complexity, setComplexity] = useState({
         uppercase: false,
-        lowercase: false,
-        numbers: false,
+        lowercase: true,
+        numbers: true,
         special: false,
       });
       const [password,setPassword]=useState('')
@@ -48,6 +48,7 @@ function Home() {
       };
 
        const handleGeneratePasswordClick = () => {
+        console.log("called.............")
         if (!isComplexitySelected) {
           toast.warning("Please select at least one constraint");
           return;
